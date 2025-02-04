@@ -1,5 +1,6 @@
 import { cylinder, difference, union } from "scad-js";
 import {
+  drainDiameter,
   holderDiameter,
   holderHeight,
   holderThickness,
@@ -12,8 +13,14 @@ function holder() {
       cylinder(holderHeight, holderDiameter / 2 + holderThickness),
       cylinder(holderHeight + nothing, holderDiameter / 2),
     ),
-    cylinder(holderThickness, holderDiameter / 2 + holderThickness).translate_z(
-      (holderHeight / 2 - holderThickness / 2) * -1,
+    difference(
+      cylinder(
+        holderThickness,
+        holderDiameter / 2 + holderThickness,
+      ).translate_z((holderHeight / 2 - holderThickness / 2) * -1),
+      cylinder(holderThickness + nothing, drainDiameter / 2).translate_z(
+        (holderHeight / 2 - holderThickness / 2) * -1,
+      ),
     ),
   );
 }
