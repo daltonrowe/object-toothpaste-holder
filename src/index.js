@@ -6,6 +6,7 @@ import {
   holderThickness,
   nothing,
 } from "./constants.js";
+import collar from "./components/collar.js";
 
 function holder() {
   return union(
@@ -28,7 +29,8 @@ function holder() {
 export default function () {
   const offset = holderDiameter + holderThickness;
   return union(
-    holder(),
+    holder().debug(),
+    collar(),
     holder().translate_x(offset),
     holder().translate_x(offset * 2),
   );
