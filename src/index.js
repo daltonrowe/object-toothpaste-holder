@@ -9,11 +9,11 @@ import {
 function holder() {
   return union(
     difference(
-      cylinder(holderHeight, holderDiameter / 2 + holderThickness).debug(),
+      cylinder(holderHeight, holderDiameter / 2 + holderThickness),
       cylinder(holderHeight + nothing, holderDiameter / 2),
     ),
     cylinder(holderThickness, holderDiameter / 2 + holderThickness).translate_z(
-      holderHeight / 2 - holderThickness / 2,
+      (holderHeight / 2 - holderThickness / 2) * -1,
     ),
   );
 }
